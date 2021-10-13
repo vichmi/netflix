@@ -1,0 +1,121 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    transition: 0.5s;
+    z-index: 999;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(to bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+}
+
+ul {
+    width: 100%;
+}
+
+.black {
+    background-color: #141414;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.navbar li {
+    display: inline;
+    padding-left: 12px;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: rgb(100, 100, 100);
+    transition: 0.3s;
+}
+
+.logoimg {
+    width: 85px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 35px;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+.rightIcon {
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.parentSearch {
+    width: 100%;
+    display: inline-block;
+}
+
+.searchContainer {
+    border: white solid 1px;
+    position: relative;
+    display: flex;
+    margin-right: 20px;
+    animation: run 1s ease-in-out;
+    width: 350px;
+    max-width: 350px;
+    float: right;
+}
+
+@keyframes run {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+.searchContent {
+    background-color: black;
+    position: absolute;
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.searchIcon {
+    padding: 3px;
+    transform: translate(0, 10%);
+    cursor: pointer;
+}
+
+.searchBox {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    caret-color: white;
+    font-size: 90%;
+    color: white;
+}
+
+.searchBox::placeholder {
+    color: rgba(255, 255, 255, 0.637);
+}
