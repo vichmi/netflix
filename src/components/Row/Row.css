@@ -9,6 +9,8 @@
     position: relative;
     overflow-x: scroll;
     overflow-y: hidden;
+    scroll-behavior: smooth;
+    height: 300px;
 }
 
 .rowContainer::-webkit-scrollbar {
@@ -18,20 +20,32 @@
 .row {
     margin-left: 3%;
     width: 100%;
+    height: 100%;
+    display: block;
     scroll-behavior: smooth;
+    transform: translate(0, 5%);
 }
 
 .row img {
     border-radius: 5px;
     margin-right: 15px;
-    z-index: 1;
+    z-index: 22;
+    transition: transform 0.3s;
+    cursor: pointer;
+}   
+
+.row img:hover {
+    transform: scale(1.1);
+    animation-duration: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px;
 }
 
 .scrollButons {
     position: absolute;
+    height: 100%;
     right: 0;
     top: 0;
-    height: 100%;
+    bottom: 0;
     opacity: 0;
     cursor: pointer;
 }

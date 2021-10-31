@@ -5,7 +5,7 @@ import requests from '../../utils/Requests';
 import { IconContext } from 'react-icons';
 import {FaInfoCircle, FaPlay} from 'react-icons/fa';
 
-export default function Banner() {
+export default function Banner({clickedFilmParent}) {
     const [film, setFilm] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -34,9 +34,11 @@ export default function Banner() {
                         <span>Play</span>
                     </div>
 
-                    <div className='button' style={{backgroundColor: '#525252'}}>
+                    <div className='button' style={{backgroundColor: '#525252'}} onClick={() => {
+                                clickedFilmParent(film);
+                            }} >
                         <IconContext.Provider style={{paddingRight:' 2.4rem'}} value={{ color: "white", size: '1.3em' }}>
-                            <FaInfoCircle />
+                            <FaInfoCircle/>
                         </IconContext.Provider>
                         <div style={{width: '1em'}}></div>
                         <span style={{color: 'white'}}>More Info</span>

@@ -5,41 +5,43 @@ import { IconContext } from 'react-icons';
 import {IoChevronForwardSharp, IoChevronBackSharp} from 'react-icons/io5';
 import {Button} from 'react-scroll';
 
-export default function Row({type, title}) {
+export default function Row({type, title, clickedFilm, films}) {
 
-    const [arr, setArr] = useState([]); 
-    const ref = useRef(null);
+    const [arr, setArr] = useState([]);
 
-    const scrollBtn = (scrollOffset) => {
-        ref.current.scrollLeft += scrollOffset;
+    const scrollBtn = (e) => {
+        let parent = e.target.parentNode;
+        if(parent.localName == 'svg') {
+            parent = parent.parentNode;
+        }
+        parent.scrollLeft += 200;
+        console.log(parent.scrollLeft);
     };
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get(requests[type]);
-            setArr(res.data.results);
-            console.log(res.data.results);
+            if(!films) {
+                const res = await axios.get(requests[type]);
+                setArr(res.data.results);
+            }else{
+                setArr(films);
+            }
         })();
     }, []);
-
+    // console.log(arr);
     return (
-        <div>
+        <div className='rowParent'>
             <h2 style={{color: 'white', marginLeft: '3%'}}>{title}</h2>
 
             <div className='rowContainer'>
                 <div className='row'>
-                    {/* <IconContext.Provider style={{paddingLeft: '2rem'}} value={{ color: "black", size: '1.3em' }}>
-                            <IoChevronBackSharp />
-                    </IconContext.Provider> */}
                     {arr.map((film, index) => {
+                        // console.log(`https://image.tmdb.org/t/p/original/${film.poster_path}`)
                         return (
-                            <img key={index} src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} width='150' height='250' />
+                            <img id={index} key={index} onClick={() => clickedFilm(film)} src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} width='150' height='250' />
                         )
                     })}
                 </div>
-                    <IconContext.Provider value={{ color: "white", size: '8em', className: "scrollButons"}}>
-                        <IoChevronForwardSharp onClick={() => scrollBtn(20)} />
-                    </IconContext.Provider>
             </div>
         </div>
     )

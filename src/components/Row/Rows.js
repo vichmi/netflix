@@ -4,17 +4,17 @@ import axios from '../../utils/axios';
 import requests from '../../utils/Requests';
 import Row from './Row';
 
-export default function Rows() {
+export default function Rows({clickedFilmParent, data}) {
 
-    useEffect(() => {
-
-    }, []);
+    const clickedFilm = (e) => {
+        clickedFilmParent(e);
+    }
 
     return (
         <div className='rowsStart'>
-            <Row type='getNetflixOriginals' title='Netflix Originals' />
-            <Row type='getTrending' title='Trending Now' />
-            <Row type='getTopRated' title='Top Rated' />
+            {data.map((film, index) => {
+                return <Row key={index} type={film.type} title={film.title} clickedFilm={clickedFilm} />
+            })}
         </div>
     )
 }
