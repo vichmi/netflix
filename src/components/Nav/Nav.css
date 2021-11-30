@@ -132,3 +132,36 @@ a:hover {
 .searchBox::placeholder {
     color: rgba(255, 255, 255, 0.637);
 }
+
+.searchContentContainer {
+    position: absolute;
+    height: 300px;
+    background-color: black;
+    overflow: auto;
+    width: 100%;
+    top: 28px;
+    border: white 1px solid;
+}
+
+.searchFilmCon {
+    display: flex;
+    justify-content: space-between;
+}
+.searchFilmCon:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.searchFilmCon img {
+    width:100px;
+    height: 50px;
+    vertical-align: middle;
+    align-self: center;
+}
+
+.searchFilmCon h2 {
+    color: white;
+}
+.searchFilmCon:hover h2 {
+    color: black;
+}

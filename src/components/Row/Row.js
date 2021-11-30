@@ -35,12 +35,12 @@ export default function Row({type, title, clickedFilm, films}) {
 
             <div className='rowContainer'>
                 <div className='row'>
-                    {arr.map((film, index) => {
+                    {arr ? arr.map((film, index) => {
                         // console.log(`https://image.tmdb.org/t/p/original/${film.poster_path}`)
                         return (
                             <img id={index} key={index} onClick={() => clickedFilm(film)} src={`https://image.tmdb.org/t/p/original/${film.poster_path}`} width='150' height='250' />
                         )
-                    })}
+                    }) : null}
                 </div>
             </div>
         </div>

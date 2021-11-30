@@ -1,0 +1,82 @@
+.profile_container {
+    color: white;
+    margin-top: 50px;
+    height: 100vh;
+}
+
+.profile_body {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 8%;
+    max-width: 800px;
+}
+
+.profile_info {
+    display: flex;
+}
+
+.profile_details {
+    color: white;
+    margin-left: 25px;
+    flex: 1;
+}
+
+.profile_info img {
+    height: 100px;
+}
+
+.profile_body h1 {
+    font-size: 60px;
+    font-weight: 400;
+    border-bottom: 1px solid #282c2d;
+    margin-bottom: 20px;
+}
+
+.profile_details h2 {
+    background-color: grey;
+    padding: 15px;
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.profile_plans_container .signOut {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 5%;
+    width: 100%;
+    color: white;
+    background-color: #e50914;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.profile_plans_container h3 {
+    border-bottom: 1px solid #e50914;
+    padding-bottom: 10px;
+}
+
+.profile_plan {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.profile_plan button {
+    background-color: #e50914;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile_plan button:hover {
+    background-color: #ff000d;
+}

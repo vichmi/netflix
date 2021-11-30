@@ -27,8 +27,13 @@ export default function Home() {
     return (
         <div className='container'>
             <Nav />
+            <div style={{
+                opacity: selectedMovie.id ? 0.2 : 1
+            }}>
+            <Nav clickedFilmParent={clickedFilmParent} />
             <Banner clickedFilmParent={clickedFilmParent} />
-            <Rows clickedFilmParent={clickedFilmParent} data={filmArrs} />   
+            <Rows clickedFilmParent={clickedFilmParent} data={filmArrs} />
+            </div>  
 
             {selectedMovie.id ? <div className='filmInfoContainer'>
                 <div>

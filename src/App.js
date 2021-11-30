@@ -7,24 +7,47 @@ import {
   Redirect,
   Link
 } from "react-router-dom";
-import Movies from "./pages/Movies/Movies.js";
-import Search from "./pages/Search/Search.js";
 import { useEffect } from "react";
+import { useCookies } from 'react-cookie';
+import Profile from './pages/Profile/Profile';
+import Landing from './pages/Login/Landing/Landing';
+import {auth} from './utils/firebase';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout, login, selectUser} from './utils/userSlice';
 
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged(userAuth => {
+      if(userAuth) {
+        dispatch(login({
+          uid: userAuth.uid,
+          email: userAuth.email
+        }));
+      }else{
+        dispatch(logout());
+      }
+    })
+
+    return unsub;
+  }, []);
+
   return (
     <Router>
-      <Nav a='asd' />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/movies' component={Movies} />
-        <Route exact path='/search' component={Search} />
-        <Route exact path='/404'>
-          <h1 style={{color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '95vh'}}>404 Page Not Found</h1>
-        </Route>
-        
-        <Redirect to='/404' />
+      {!user ? <Landing /> : 
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/landing' component={Landing} />
+          <Route exact path='/profile' component={Profile} />
+          <Route exact path='/404'>
+            <h1 style={{color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '95vh'}}>404 Page Not Found</h1>
+          </Route>
+          
+          <Redirect to='/404' />
       </Switch>
+      }
     </Router>
   );
 }
